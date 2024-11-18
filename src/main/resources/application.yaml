@@ -1,0 +1,36 @@
+# jpa
+spring:
+  profiles:
+    include: oauth
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+  datasource:
+    url: jdbc:h2:mem:test;NON_KEYWORDS=USER
+  session:
+    jdbc:
+      initialize-schema: always  # 애플리케이션 시작 시 세션 테이블이 자동으로 생성되도록 설정
+    timeout: 30m                # 세션 타임아웃 설정
+  h2:
+    console:
+      enabled: true
+# logging
+logging:
+  level:
+    org:
+      springframework:
+        web: TRACE
+      hibernate:
+        orm:
+          jdbc:
+            bind: TRACE
+# encoding
+server:
+  servlet:
+    encoding:
+      force-response: true
