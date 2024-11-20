@@ -35,3 +35,29 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### oauth ###
+application-oauth.properties
+application-oauth.yaml
+
+### terraform ###
+/infra/terraform/.terraform.*
+**/.terraform/*
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+*gitignore*.tf
+*.log
+*.bak
+.vagrant/
+
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+.DS_Store
+.vscode/
+.sentinel
+.terraformrc
+terraform.rc

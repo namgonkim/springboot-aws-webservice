@@ -1,11 +1,10 @@
 package com.namgonkim.book.webservice.domain.posts;
 
 import com.namgonkim.book.webservice.domain.BaseTimeEntity;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
