@@ -43,7 +43,7 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
     implementation 'javax.xml.bind:jaxb-api:2.3.1' // XML 문서와 Java 객체 간 매핑 자동화
 
-//    implementation 'mysql:mysql-connector-java'
+    implementation 'org.mariadb.jdbc:mariadb-java-client'
 }
 
 test {

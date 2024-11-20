@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    include: oauth,real-db
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  session:
+    jdbc:
+      initialize-schema: always  # 애플리케이션 시작 시 세션 테이블이 자동으로 생성되도록 설정
+    timeout: 30m                # 세션 타임아웃 설정
