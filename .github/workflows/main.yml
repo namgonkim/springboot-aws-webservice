@@ -1,0 +1,42 @@
+name: cony springboot3 webservice 
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Repo code With Submodules
+        uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+          token: ${{secrets.GH_ACCESS_TOKEN}}
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Permission for gradlew
+        run: chmod +x ./gradlew
+        shell: bash
+
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2.4.2 # 버전 선택
+        with:
+          arguments: build
+
+      - name: Make Zip File
+        run: zip -qq -r ./$GITHUB_SHA.zip .
+        shell: bash
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-region: ap-northeast-2
